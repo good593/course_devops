@@ -29,15 +29,5 @@ paginate: true
 
 ![alt text](./img/image-3.png)
 
----
-# [Hadoop Ecosystem](./hadoop%20ecosystem/README.md)
 
----
-# [Spark](./spark/README.md)
-
----
-# [Kubernetes](./kubernetes/README.md)
-
----
-# [Kubeflow](./kubeflow/README.md)
 

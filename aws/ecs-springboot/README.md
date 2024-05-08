@@ -28,7 +28,7 @@ Amazon S3에 파이프라인 아티팩트를 저장하고 액세스하는 경우
 
 ---
 ### 단계1: Springboot 프로젝트 생성
-![alt text](image.png)
+![alt text](./img/image.png)
 
 ---
 ### 단계2: Springboot 테스트 
@@ -37,11 +37,11 @@ http://localhost:8080/api/v1/hello
 
 http://localhost:8080/api/v1/message/goodjob!!!
 ```
-![alt text](image-1.png)
+![alt text](./img/image-1.png)
 
 ---
 ### 단계3: Dockerfile 추가 
-![alt text](image-2.png)
+![alt text](./img/image-2.png)
 
 ---
 ### 단계4: docker build 테스트 
@@ -49,64 +49,64 @@ http://localhost:8080/api/v1/message/goodjob!!!
 docker build -f ./aws/ecs-springboot/Dockerfile -t ecs-springboot:latest .
 docker images
 ```
-![alt text](image-3.png)
+![alt text](./img/image-3.png)
 
 ---
 ### 단계5: buildspec.yml 추가 
-![alt text](image-4.png) 
+![alt text](./img/image-4.png) 
 
 ---
 ### 단계6: Github 배포 
-![alt text](image-9.png)
+![alt text](./img/image-9.png)
 
 ---
 # Amazon Elastic Container Registry
 
 ---
 ### 단계1: Amazon Elastic Container Registry
-![alt text](image-5.png)
+![alt text](./img/image-5.png)
 
 ---
 ### 단계2: Amazon Elastic Container Registry > Setting
 - `buildspec.yml`에 정의된 이름으로 작성
 
-![alt text](image-7.png)
+![alt text](./img/image-7.png)
 
 ---
 ### 단계3: Amazon Elastic Container Registry > Create
-![w:700](image-6.png)
+![w:700](./img/image-6.png)
 
 ---
 # CodeBuild
 
 ---
 ### 단계1: Create connection
-![alt text](image-8.png)
+![alt text](./img/image-8.png)
 
 ---
-![alt text](image-10.png)
+![alt text](./img/image-10.png)
 
 ---
-![alt text](image-11.png)
+![alt text](./img/image-11.png)
 
 ---
 ### 단계2: connection 확인 
-![alt text](image-12.png)
+![alt text](./img/image-12.png)
 
 ---
 ### 단계3: Create build project
-![alt text](image-13.png) 
+![alt text](./img/image-13.png) 
 
 ---
 - Project configuration
-![alt text](image-14.png)
+![alt text](./img/image-14.png)
 
 ---
 - Connect to Github
-![alt text](image-15.png)
+![alt text](./img/image-15.png)
 
 ---
-![alt text](image-16.png)
+![alt text](./img/image-16.png)
 
 ---
 - Environment
@@ -114,84 +114,84 @@ docker images
 # Role name
 codebuild-ecs-springboot-build-service-role
 ```
-![bg right w:600](image-17.png)
+![bg right w:600](./img/image-17.png)
 
 ---
 - Buildspec
-![alt text](image-18.png)
+![alt text](./img/image-18.png)
 
 ---
 - Create build project
-![bg right w:600](image-19.png)
+![bg right w:600](./img/image-19.png)
 
 ---
 ### 단계4: build role > add Permission
-![alt text](image-21.png)
+![alt text](./img/image-21.png)
 
 ---
 ```shell
 # add Permission
 AmazonEC2ContainerRegistryPowerUser
 ```
-![alt text](image-22.png)
+![alt text](./img/image-22.png)
 
 ---
-![alt text](image-23.png)
+![alt text](./img/image-23.png)
 
 
 ---
 ### 단계5: Start build
-![alt text](image-20.png)
+![alt text](./img/image-20.png)
 
 ---
 - Start build > Succeeded
 
-![alt text](image-24.png)
+![alt text](./img/image-24.png)
 
 ---
 ### 단계6: Amazon Elastic Container Registry 확인 
-![alt text](image-25.png) 
+![alt text](./img/image-25.png) 
 
 ---
 # Amazon Elastic Container Service
 
 ---
 ### 단계1: Create Cluster
-![alt text](image-26.png)
+![alt text](./img/image-26.png)
 
 ---
 - Cluster configuration
 
-![alt text](image-27.png)
+![alt text](./img/image-27.png)
 
 ---
 - Infrastructure
 
-![alt text](image-28.png)
+![alt text](./img/image-28.png)
 
 ---
 - 생성 확인 
 
-![alt text](image-29.png)
+![alt text](./img/image-29.png)
 
 ---
 ### 단계2: Create new task definition
-![alt text](image-30.png)
+![alt text](./img/image-30.png)
 
 ---
 - Task definition configuration
 
-![alt text](image-31.png)
+![alt text](./img/image-31.png)
 
 ---
 - Infrastructure requirements
 
-![bg right w:600](image-32.png)
+![bg right w:600](./img/image-32.png)
 
 ---
 - copy > Amazon Elastic Container Registry URI
 
-![alt text](image-33.png)
+![alt text](./img/image-33.png)
 
 ---
 - Container 
@@ -199,55 +199,55 @@ AmazonEC2ContainerRegistryPowerUser
 # buildspec.yml에 정의된 이름으로 생성 
 ecs-springboot-container
 ```
-![w:800](image-34.png)
+![w:800](./img/image-34.png)
 
 ---
 - Logging
 
-![alt text](image-35.png)
+![alt text](./img/image-35.png)
 
 ---
 - HealthCheck
 ```shell
 CMD-SHELL,curl -f http://localhost:8080/api/v1/hello || exit 1
 ```
-![w:700](image-36.png)
+![w:700](./img/image-36.png)
 
 ---
 - Create
 
-![w:700](image-37.png)
+![w:700](./img/image-37.png)
 
 ---
 - 결과 확인 
 
-![alt text](image-38.png)
+![alt text](./img/image-38.png)
 
 ---
 ### 단계3: Create Service
 - Cluster 선택 
 
-![alt text](image-40.png)
+![alt text](./img/image-40.png)
 
 ---
 - Create Service
 
-![alt text](image-39.png)
+![alt text](./img/image-39.png)
 
 ---
 - Environment
 
-![alt text](image-41.png)
+![alt text](./img/image-41.png)
 
 ---
 - Deployment configuration
 
-![w:700](image-42.png)
+![w:700](./img/image-42.png)
 
 ---
 - Create 
 
-![w:700](image-43.png)
+![w:700](./img/image-43.png)
 
 ---
 # API 테스트 
@@ -256,76 +256,76 @@ CMD-SHELL,curl -f http://localhost:8080/api/v1/hello || exit 1
 ### 단계1: Public IP 확인 
 - Service 선택 
 
-![alt text](image-45.png)
+![alt text](./img/image-45.png)
 
 ---
 - Task 선택 
 
-![alt text](image-44.png)
+![alt text](./img/image-44.png)
 
 ---
 - Public IP 확인 
 
-![alt text](image-46.png)
+![alt text](./img/image-46.png)
 
 ---
 ### 단계2: Security Group > Add Inbound rule
-![alt text](image-47.png)
+![alt text](./img/image-47.png)
 
 ---
 ### 단계3: API 테스트 
 ```shell
 [Public IP]:8080/api/v1/hello
 ```
-![alt text](image-48.png)
+![alt text](./img/image-48.png)
 
 ---
 # CodePipeline
 
 ---
 ### 단계1: Create pipeline
-![alt text](image-49.png)
+![alt text](./img/image-49.png)
 
 ---
 ### 단계2: Choose pipeline settings
 
-![w:700](image-50.png)
+![w:700](./img/image-50.png)
 
 ---
 - Next
 
-![alt text](image-51.png)
+![alt text](./img/image-51.png)
 
 ---
 ### 단계3: Source
 
-![bg right w:600](image-52.png)
+![bg right w:600](./img/image-52.png)
 
 ---
 - Next
 
-![alt text](image-53.png)
+![alt text](./img/image-53.png)
 
 ---
 ### 단계4: Add build stage
 
-![bg right w:600](image-54.png)
+![bg right w:600](./img/image-54.png)
 
 ---
 ### 단계5: Add deploy stage
-![bg right w:600](image-55.png)
+![bg right w:600](./img/image-55.png)
 
 
 ---
 ### 단계6: github push > codepipeline 자동배포  
-
+![alt text](./img/image-56.png)
 
 ---
 ### 단계7: API 테스트  
 ```shell
 [Public IP]:8080/api/v1/hello
 ```
-![alt text](image-48.png)
+![alt text](./img/image-48.png)
 
 ---
 # 참고문서

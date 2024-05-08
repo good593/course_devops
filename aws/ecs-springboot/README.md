@@ -107,9 +107,50 @@ docker images
 
 ---
 - Environment
+```shell
+# Role name
+codebuild-ecs-springboot-build-service-role
+```
 ![bg right w:600](image-17.png)
 
 ---
+- Buildspec
+![alt text](image-18.png)
+
+---
+- Create build project
+![bg right w:600](image-19.png)
+
+---
+### 단계6: build role > add Permission
+![alt text](image-21.png)
+
+---
+```shell
+# add Permission
+AmazonEC2ContainerRegistryPowerUser
+```
+![alt text](image-22.png)
+
+---
+![alt text](image-23.png)
+
+
+---
+### 단계6: Start build
+![alt text](image-20.png)
+
+---
+
+
+
+
+
+
+
+
+
+
 
 
 

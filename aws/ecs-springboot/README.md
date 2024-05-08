@@ -24,6 +24,60 @@ CodePipeline은 AWS 프리 티어의 일부로 신규 및 기존 고객에게 �
 Amazon S3에 파이프라인 아티팩트를 저장하고 액세스하는 경우와 파이프라인에 연결한 기타 AWS 및 서드 파티 서비스에서 작업을 트리거하는 경우 추가 요금이 발생할 수 있습니다.
 
 ---
+# Github Code
+
+---
+### 단계1: Springboot 프로젝트 생성
+![alt text](image.png)
+
+---
+### 단계2: Springboot 테스트 
+```shell
+http://localhost:8080/api/v1/hello
+
+http://localhost:8080/api/v1/message/goodjob!!!
+```
+![alt text](image-1.png)
+
+---
+### 단계3: Dockerfile 추가 
+![alt text](image-2.png)
+
+---
+### 단계4: docker build 테스트 
+```shell
+docker build -t ecs-springboot:latest .
+docker images
+```
+![alt text](image-3.png)
+
+---
+### 단계5: buildspec.yml 추가 
+![alt text](image-4.png) 
+
+---
+# AWS
+
+---
+### 단계1: Amazon Elastic Container Registry
+![alt text](image-5.png)
+
+---
+### 단계2: Amazon Elastic Container Registry > Setting
+- `buildspec.yml`에 정의된 이름으로 작성
+
+![alt text](image-7.png)
+
+---
+### 단계3: Amazon Elastic Container Registry > Create
+![w:700](image-6.png)
+
+---
+
+
+
+
+---
 # 참고문서
 - https://github.com/kodedge-swapneel/springboot-aws-deploy
 

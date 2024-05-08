@@ -4,17 +4,17 @@ ENV APP_HOME=/apps
 
 WORKDIR $APP_HOME
 
-COPY build.gradle settings.gradle gradlew $APP_HOME
+COPY ./aws/ecs-springboot/build.gradle ./aws/ecs-springboot/settings.gradle ./aws/ecs-springboot/gradlew $APP_HOME
 
-COPY gradle $APP_HOME/gradle
+COPY ./aws/ecs-springboot/gradle $APP_HOME/gradle
 
 RUN chmod +x gradlew
 
 RUN ./gradlew build || return 0
 
-COPY src $APP_HOME/src
+COPY ./aws/ecs-springboot/src $APP_HOME/src
 
-RUN ./gradlew clean build --refresh-dependencies
+RUN ./gradlew clean build
 
 FROM openjdk:17.0.2-jdk
 

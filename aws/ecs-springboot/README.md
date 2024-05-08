@@ -317,15 +317,15 @@ CMD-SHELL,curl -f http://localhost:8080/api/v1/hello || exit 1
 
 
 ---
+### 단계6: github push > codepipeline 자동배포  
 
 
-
-
-
-
-
-
-
+---
+### 단계7: API 테스트  
+```shell
+[Public IP]:8080/api/v1/hello
+```
+![alt text](image-48.png)
 
 ---
 # 참고문서

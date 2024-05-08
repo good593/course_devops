@@ -46,7 +46,7 @@ http://localhost:8080/api/v1/message/goodjob!!!
 ---
 ### 단계4: docker build 테스트 
 ```shell
-docker build -t ecs-springboot:latest .
+docker build -f ./aws/ecs-springboot/Dockerfile -t ecs-springboot:latest .
 docker images
 ```
 ![alt text](image-3.png)
@@ -60,7 +60,7 @@ docker images
 ![alt text](image-9.png)
 
 ---
-# AWS
+# Amazon Elastic Container Registry
 
 ---
 ### 단계1: Amazon Elastic Container Registry
@@ -77,7 +77,10 @@ docker images
 ![w:700](image-6.png)
 
 ---
-### 단계4: Create connection
+# CodeBuild
+
+---
+### 단계1: Create connection
 ![alt text](image-8.png)
 
 ---
@@ -87,11 +90,11 @@ docker images
 ![alt text](image-11.png)
 
 ---
-### 단계5: connection 확인 
+### 단계2: connection 확인 
 ![alt text](image-12.png)
 
 ---
-### 단계6: Create build project
+### 단계3: Create build project
 ![alt text](image-13.png) 
 
 ---
@@ -122,7 +125,7 @@ codebuild-ecs-springboot-build-service-role
 ![bg right w:600](image-19.png)
 
 ---
-### 단계6: build role > add Permission
+### 단계4: build role > add Permission
 ![alt text](image-21.png)
 
 ---
@@ -137,14 +140,183 @@ AmazonEC2ContainerRegistryPowerUser
 
 
 ---
-### 단계6: Start build
+### 단계5: Start build
 ![alt text](image-20.png)
 
 ---
+- Start build > Succeeded
+
+![alt text](image-24.png)
+
+---
+### 단계6: Amazon Elastic Container Registry 확인 
+![alt text](image-25.png) 
+
+---
+# Amazon Elastic Container Service
+
+---
+### 단계1: Create Cluster
+![alt text](image-26.png)
+
+---
+- Cluster configuration
+
+![alt text](image-27.png)
+
+---
+- Infrastructure
+
+![alt text](image-28.png)
+
+---
+- 생성 확인 
+
+![alt text](image-29.png)
+
+---
+### 단계2: Create new task definition
+![alt text](image-30.png)
+
+---
+- Task definition configuration
+
+![alt text](image-31.png)
+
+---
+- Infrastructure requirements
+
+![bg right w:600](image-32.png)
+
+---
+- copy > Amazon Elastic Container Registry URI
+
+![alt text](image-33.png)
+
+---
+- Container 
+```shell
+# buildspec.yml에 정의된 이름으로 생성 
+ecs-springboot-container
+```
+![w:800](image-34.png)
+
+---
+- Logging
+
+![alt text](image-35.png)
+
+---
+- HealthCheck
+```shell
+CMD-SHELL,curl -f http://localhost:8080/api/v1/hello || exit 1
+```
+![w:700](image-36.png)
+
+---
+- Create
+
+![w:700](image-37.png)
+
+---
+- 결과 확인 
+
+![alt text](image-38.png)
+
+---
+### 단계3: Create Service
+- Cluster 선택 
+
+![alt text](image-40.png)
+
+---
+- Create Service
+
+![alt text](image-39.png)
+
+---
+- Environment
+
+![alt text](image-41.png)
+
+---
+- Deployment configuration
+
+![w:700](image-42.png)
+
+---
+- Create 
+
+![w:700](image-43.png)
+
+---
+# API 테스트 
+
+---
+### 단계1: Public IP 확인 
+- Service 선택 
+
+![alt text](image-45.png)
+
+---
+- Task 선택 
+
+![alt text](image-44.png)
+
+---
+- Public IP 확인 
+
+![alt text](image-46.png)
+
+---
+### 단계2: Security Group > Add Inbound rule
+![alt text](image-47.png)
+
+---
+### 단계3: API 테스트 
+```shell
+[Public IP]:8080/api/v1/hello
+```
+![alt text](image-48.png)
+
+---
+# CodePipeline
+
+---
+### 단계1: Create pipeline
+![alt text](image-49.png)
+
+---
+### 단계2: Choose pipeline settings
+
+![w:700](image-50.png)
+
+---
+- Next
+
+![alt text](image-51.png)
+
+---
+### 단계3: Source
+
+![bg right w:600](image-52.png)
+
+---
+- Next
+
+![alt text](image-53.png)
+
+---
+### 단계4: Add build stage
+
+![bg right w:600](image-54.png)
+
+---
+### 단계5: Add deploy stage
+![bg right w:600](image-55.png)
 
 
-
-
+---
 
 
 

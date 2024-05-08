@@ -56,6 +56,10 @@ docker images
 ![alt text](image-4.png) 
 
 ---
+### 단계6: Github 배포 
+![alt text](image-9.png)
+
+---
 # AWS
 
 ---
@@ -71,6 +75,39 @@ docker images
 ---
 ### 단계3: Amazon Elastic Container Registry > Create
 ![w:700](image-6.png)
+
+---
+### 단계4: Create connection
+![alt text](image-8.png)
+
+---
+![alt text](image-10.png)
+
+---
+![alt text](image-11.png)
+
+---
+### 단계5: connection 확인 
+![alt text](image-12.png)
+
+---
+### 단계6: Create build project
+![alt text](image-13.png) 
+
+---
+- Project configuration
+![alt text](image-14.png)
+
+---
+- Connect to Github
+![alt text](image-15.png)
+
+---
+![alt text](image-16.png)
+
+---
+- Environment
+![bg right w:600](image-17.png)
 
 ---
 

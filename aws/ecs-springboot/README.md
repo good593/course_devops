@@ -9,6 +9,10 @@ style: |
 marp: true
 paginate: true
 ---
+# 전체 아키텍처 
+![w:800](./img/info/image-4.png)
+
+---
 # [Github](https://blog.naver.com/ufo7142/220628116787)
 - 깃허브(Github)는 분산 버전 관리 툴인 깃(Git)를 사용하는 프로젝트를 지원하는 웹호스팅 서비스이다.
 ### Git

@@ -350,6 +350,10 @@ Amazon S3에 파이프라인 아티팩트를 저장하고 액세스하는 경우
 ![alt text](./img/image-48.png)
 
 ---
+### 단계8: LB 추가하기(생략) 
+- https://www.youtube.com/watch?v=Ut-yDePowbY&si=qZY459sHVQzUqd57
+
+---
 # 참고문서
 - https://github.com/kodedge-swapneel/springboot-aws-deploy
 

@@ -63,6 +63,8 @@ COPY hello.html /var/www/html
 
 # 작업공간 이동 (=cd)
 WORKDIR /var/www/html
+# 로그 확인 
+RUN ls
 
 # apache가 기본적으로 80포트를 사용하기 때문에 expose를 이용해 apache server로 접근이 가능하도록 한다.
 EXPOSE 80 
@@ -75,9 +77,10 @@ CMD ["apachectl", "-D", "FOREGROUND"]
 ---
 ## Dockerfile build
 - 이미지 빌드 명령어 
+- [로그 확인](https://stackoverflow.com/questions/34213837/dockerfile-how-to-redirect-the-output-of-a-run-command-to-a-variable) 
 ```shell
 # docker build -t [이미지 이름:이미지 버전] [Dockerfile의 경로]
-docker build -t apache-image .
+docker build --no-cache --progress plain -t apache-image .
 ```
 
 ---

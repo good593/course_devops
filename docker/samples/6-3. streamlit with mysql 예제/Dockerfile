@@ -1,9 +1,5 @@
-FROM python:3.12 AS python-build
-RUN pip install mysqlclient
+FROM python:3.12
 
-FROM python:3.12-slim
-COPY --from=python-build /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-RUN apt-get update && apt-get install -y libmariadb3
 
 # 작업 디렉토리 설정
 WORKDIR /app
